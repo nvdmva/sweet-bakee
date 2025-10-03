@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Bake - Кондитерская и кофе</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #2C5530;
+            text-align: center;
+            background: #d6e2da;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #cfcccc;
+            box-shadow: 0 2px 10px rgba(44, 85, 48, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #4A7C59;
+        }
+
+        .logo h1 {
+            color: #2C5530;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo span {
+            color: #4A7C59;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2C5530;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: #c14f4f;
+            background: #4A7C59;
+        }
+
+        /* Главный баннер */
+        .hero {
+            background: linear-gradient(135deg, #2C5530, #4A7C59);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(231, 219, 219);
+            margin-top: 80px;
+            border-bottom: 5px solid #4A7C59;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🍰☕🎂';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #092e1b;
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            font-weight: 500;
+            color: #E8F5E9;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #FFFFFF, #F1F8E9);
+            color: #2C5530;
+            border: 3px solid #FFFFFF;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #4A7C59, #6B9D77);
+            color: white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        /* Секции */
+        section {
+            padding: 120px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 5rem;
+            color: #2C5530;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 20px;
+            border: 4px double #4A7C59;
+            border-radius: 15px;
+            display: inline-block;
+            background: linear-gradient(135deg, #FFFFFF, #F1F8E9);
+            box-shadow: 0 8px 25px rgba(44, 85, 48, 0.2);
+        }
+
+        /* О нас */
+        .about {
+            background: linear-gradient(135deg, #FFFFFF, #F1F8E9);
+            border-top: 3px solid #E8F5E9;
+            border-bottom: 3px solid #E8F5E9;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            text-align: center;
+            padding: 40px;
+            border: 3px solid #4A7C59;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #2C5530;
+            font-weight: 500;
+        }
+
+        .about-text ul {
+            margin-top: 2.5rem;
+            list-style: none;
+            text-align: center;
+        }
+
+        .about-text li {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4A7C59;
+            padding: 8px 15px;
+            border: 2px solid #C8E6C9;
+            border-radius: 10px;
+            background: #E8F5E9;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        /* Торты */
+        .products {
+            background: linear-gradient(135deg, #FFFFFF, #F8FBF8);
+            border-top: 3px solid #E8F5E9;
+            border-bottom: 3px solid #E8F5E9;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3.5rem;
+            justify-items: center;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            max-width: 380px;
+            text-align: center;
+            border: 3px solid #E8F5E9;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 3px solid #4A7C59;
+        }
+
+        .card-image {
+            border-bottom: 3px solid #E8F5E9;
+            background: linear-gradient(135deg, #F1F8E9, #E8F5E9);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .card-content {
+            padding: 2.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            color: #2C5530;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 10px;
+            border: 2px dashed #4A7C59;
+            border-radius: 10px;
+            background: #F1F8E9;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #4A7C59;
+            padding: 12px 25px;
+            border: 3px solid #C8E6C9;
+            border-radius: 50px;
+            background: #E8F5E9;
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        /* Кофе */
+        .coffee {
+            background: linear-gradient(135deg, #FFFFFF, #F1F8E9);
+            border-top: 3px solid #E8F5E9;
+            border-bottom: 3px solid #E8F5E9;
+        }
+
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            justify-items: center;
+        }
+
+        .coffee-item {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 320px;
+            transition: all 0.3s ease;
+            border: 3px solid #2C5530;
+            position: relative;
+        }
+
+        .coffee-item::before {
+            content: '☕';
+            font-size: 3rem;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 15px;
+            color: #4A7C59;
+        }
+
+        .coffee-item:hover {
+            border: 3px solid #4A7C59;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .coffee-item h3 {
+            color: #2C5530;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 15px;
+            border: 2px solid #4A7C59;
+            border-radius: 10px;
+            background: #F1F8E9;
+        }
+
+        .coffee-item p {
+            color: #2C5530;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Контакты */
+        .contact {
+            background: linear-gradient(135deg, #FFFFFF, #F8FBF8);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            justify-items: center;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 320px;
+            border: 3px solid #4A7C59;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border: 3px solid #2C5530;
+            background: linear-gradient(135deg, #FFFFFF, #F1F8E9);
+        }
+
+        .contact-item h3 {
+            color: #2C5530;
+            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 10px;
+            border: 2px dotted #4A7C59;
+            border-radius: 10px;
+            background: #F1F8E9;
+        }
+
+        .contact-item p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #2C5530;
+            font-weight: 500;
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, #2C5530, #4A7C59);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-top: 5px solid #FFFFFF;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                margin-top: 1.5rem;
+                gap: 1.2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .about-text ul {
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+                padding: 15px;
+            }
+
+            section {
+                padding: 100px 0;
+            }
+
+            .products-grid,
+            .coffee-grid,
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-card,
+            .coffee-item,
+            .contact-item {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                padding: 18px 35px;
+                font-size: 1.1rem;
+            }
+            
+            .card-image {
+                font-size: 3rem;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>SWEET BAKE</h1>
+                <span>Кондитерская & Кофе</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#products">Торты</a></li>
+                <li><a href="#coffee">Кофе</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Главный баннер -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>СЛАДКИЕ МОМЕНТЫ С НАМИ</h2>
+            <p>Вкуснейшие торты и ароматный кофе в одном месте</p>
+            <button class="cta-button" onclick="orderNow()">ЗАКАЗАТЬ СЕЙЧАС</button>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>О НАШЕЙ КОНДИТЕРСКОЙ</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Мы создаем неповторимые десерты и готовим идеальный кофе уже более 5 лет. Используем только натуральные ингредиенты и готовим с любовью!</p>
+                    <ul>
+                        <li>✅ Свежие продукты ежедневно</li>
+                        <li>✅ Авторские рецепты</li>
+                        <li>✅ Профессиональные бариста</li>
+                        <li>✅ Доставка и самовывоз</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Торты -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2>НАШИ ТОРТЫ</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="card-image">
+                        🍫
+                    </div>
+                    <div class="card-content">
+                        <h3>ШОКОЛАДНЫЙ РАЙ</h3>
+                        <p>Нежный шоколадный торт с карамелью</p>
+                        <span class="price">1 800 ₽</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="card-image">
+                        🍓
+                    </div>
+                    <div class="card-content">
+                        <h3>ФРУКТОВОЕ НАСЛАЖДЕНИЕ</h3>
+                        <p>Легкий торт со свежими ягодами</p>
+                        <span class="price">2 200 ₽</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="card-image">
+                        🎂
+                    </div>
+                    <div class="card-content">
+                        <h3>КРАСНЫЙ БАРХАТ</h3>
+                        <p>Классический торт со сливочным кремом</p>
+                        <span class="price">2 500 ₽</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кофе -->
+    <section id="coffee" class="coffee">
+        <div class="container">
+            <h2>НАШЕ КОФЕ МЕНЮ</h2>
+            <div class="coffee-grid">
+                <div class="coffee-item">
+                    <h3>ЭСПРЕССО</h3>
+                    <p>Классический крепкий кофе</p>
+                    <span class="price">150 ₽</span>
+                </div>
+                <div class="coffee-item">
+                    <h3>КАПУЧИНО</h3>
+                    <p>С молочной пенкой и рисунком</p>
+                    <span class="price">250 ₽</span>
+                </div>
+                <div class="coffee-item">
+                    <h3>ЛАТТЕ</h3>
+                    <p>Нежный кофе с большим количеством молока</p>
+                    <span class="price">280 ₽</span>
+                </div>
+                <div class="coffee-item">
+                    <h3>АМЕРИКАНО</h3>
+                    <p>Черный кофе по-американски</p>
+                    <span class="price">180 ₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>КОНТАКТЫ</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📍 АДРЕС</h3>
+                    <p>ул. Сладкая, д. 17, Иркутск</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📞 ТЕЛЕФОН</h3>
+                    <p>+7 (171) 171-17-17</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🕒 ВРЕМЯ РАБОТЫ</h3>
+                    <p>Пн-Вс: 8:00 - 21:00</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🌐 СОЦСЕТИ</h3>
+                    <p>Instagram: @sweetbake</p>
+                    <p>VK: vk.com/sweetbake</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SWEET BAKE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Функция для кнопки заказа
+        function orderNow() {
+            alert('Спасибо за интерес! Позвоните нам по номеру +7 (495) 123-45-67 для оформления заказа.');
+        }
+
+        // Фиксированная навигация
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.style.background = '#FFFFFF';
+            }
+        });
+    </script>
+</body>
+</html>
